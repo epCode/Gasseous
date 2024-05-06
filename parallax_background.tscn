@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3tjl1fv64sst"]
+
+[ext_resource type="Texture2D" uid="uid://dlqx87wmew78d" path="res://TEXTURES/TEXTURES/player/Space.png" id="1_cnjvm"]
+[ext_resource type="Texture2D" uid="uid://5xhbisvgntc8" path="res://TEXTURES/TEXTURES/player/Space2t.png" id="2_ootpg"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.01, 0.01)
+motion_mirroring = Vector2(60000, 60000)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+texture_repeat = 1
+scale = Vector2(50.2597, 50.2597)
+texture = ExtResource("1_cnjvm")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(60000, 60000)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+texture_repeat = 1
+scale = Vector2(59.8491, 59.8491)
+texture = ExtResource("2_ootpg")
+centered = false

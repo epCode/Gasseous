@@ -1,0 +1,266 @@
+[gd_scene load_steps=12 format=3 uid="uid://cm1gsrhebad6n"]
+
+[ext_resource type="Script" path="res://WORLD.gd" id="1_5enri"]
+[ext_resource type="PackedScene" uid="uid://b3tjl1fv64sst" path="res://parallax_background.tscn" id="2_vafak"]
+[ext_resource type="Texture2D" uid="uid://b6w2u053hapep" path="res://TEXTURES/TEXTURES/player/UI/FactionEmpire.png" id="3_ni7ca"]
+[ext_resource type="Texture2D" uid="uid://cbdhj61n0ohk0" path="res://TEXTURES/TEXTURES/player/UI/FactionAlliance.png" id="4_v6wdw"]
+[ext_resource type="Texture2D" uid="uid://cdgl5u3e04tr7" path="res://TEXTURES/TEXTURES/player/ship_choose_temp.png" id="5_cmns1"]
+[ext_resource type="Texture2D" uid="uid://cx3dus2le0uoj" path="res://TEXTURES/TEXTURES/player/UI/healthbar2Value.png" id="6_ukaq4"]
+[ext_resource type="Script" path="res://HealthBar.gd" id="7_46x4f"]
+[ext_resource type="Texture2D" uid="uid://dkddk648o2xio" path="res://TEXTURES/TEXTURES/player/UI/healthbarOVER.png" id="8_tpd62"]
+[ext_resource type="Texture2D" uid="uid://bt7tbl4ehfgew" path="res://TEXTURES/TEXTURES/player/UI/healthbarVALUE.png" id="9_ghv36"]
+
+[sub_resource type="Theme" id="Theme_ka8ow"]
+default_font_size = 20
+
+[sub_resource type="Environment" id="Environment_2wjq0"]
+background_mode = 3
+glow_enabled = true
+glow_levels/1 = 0.67
+glow_levels/3 = 0.0
+glow_levels/5 = 0.0
+glow_normalized = true
+glow_intensity = 0.67
+glow_strength = 0.86
+glow_bloom = 0.01
+glow_blend_mode = 1
+glow_hdr_threshold = 0.78
+glow_hdr_luminance_cap = 42.63
+glow_map_strength = 0.82
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_5enri")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_vafak")]
+scroll_offset = Vector2(-37435.4, -11954.5)
+
+[node name="CANVAS" type="CanvasLayer" parent="."]
+
+[node name="BACKROUND" type="ColorRect" parent="CANVAS"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[node name="MainMenu2" type="PanelContainer" parent="CANVAS"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 441.0
+offset_top = 248.0
+offset_right = -441.0
+offset_bottom = -247.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CANVAS/MainMenu2"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CANVAS/MainMenu2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Host" type="Button" parent="CANVAS/MainMenu2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Host"
+
+[node name="Join" type="Button" parent="CANVAS/MainMenu2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="EnterAddress" type="LineEdit" parent="CANVAS/MainMenu2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Ender Address"
+
+[node name="PauseMenu" type="PanelContainer" parent="CANVAS"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 460.0
+offset_top = 241.0
+offset_right = -460.0
+offset_bottom = -241.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CANVAS/PauseMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CANVAS/PauseMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Quit" type="Button" parent="CANVAS/PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Spectate" type="Button" parent="CANVAS/PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Spectate"
+
+[node name="Chat" type="LineEdit" parent="CANVAS/PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Enter Message"
+
+[node name="ShipMenu" type="PanelContainer" parent="CANVAS"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 441.0
+offset_top = 248.0
+offset_right = -441.0
+offset_bottom = -247.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ka8ow")
+
+[node name="ColorRect" type="ColorRect" parent="CANVAS/ShipMenu"]
+layout_mode = 2
+color = Color(0.129412, 0.129412, 0.129412, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CANVAS/ShipMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 18
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CANVAS/ShipMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="JoinGame" type="Button" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_disabled_color = Color(0.384314, 0.596078, 0.376471, 1)
+disabled = true
+text = "Join Game"
+
+[node name="Spectate" type="Button" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Spectate"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Select Faction:"
+
+[node name="FactionSelect" type="OptionButton" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+item_count = 2
+popup/item_0/text = "Rebels"
+popup/item_0/icon = ExtResource("4_v6wdw")
+popup/item_0/id = 1
+popup/item_1/text = "Empire"
+popup/item_1/icon = ExtResource("3_ni7ca")
+popup/item_1/id = 0
+
+[node name="Label2" type="Label" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Select Ship:"
+
+[node name="ItemList" type="ItemList" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/v_separation = 0
+theme_override_font_sizes/font_size = 20
+max_text_lines = 3
+auto_height = true
+max_columns = 3
+same_column_width = true
+fixed_icon_size = Vector2i(70, 70)
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Ship"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="shipmenuDisplay" type="TextureRect" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer3"]
+texture_filter = 1
+layout_mode = 2
+tooltip_text = "Your Ship"
+texture = ExtResource("5_cmns1")
+expand_mode = 4
+
+[node name="SEP" type="Label" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "_______________________________
+Ship information:"
+
+[node name="Length" type="Label" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Length: N/A"
+
+[node name="Speed" type="Label" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Speed: N/A"
+
+[node name="Fire Rate" type="Label" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Fire Rate: N/A"
+
+[node name="Class" type="Label" parent="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Class: N/A"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2wjq0")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Player/tiefighter.tscn", "res://Player/xwing.tscn", "res://Player/stardestroyer.tscn", "res://Player/tantive.tscn")
+spawn_path = NodePath("..")
+
+[node name="UI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Health2" type="TextureProgressBar" parent="UI"]
+modulate = Color(2, 2, 2, 1)
+offset_left = 419.0
+offset_top = 592.0
+offset_right = 733.0
+offset_bottom = 630.0
+value = 55.0
+nine_patch_stretch = true
+texture_progress = ExtResource("6_ukaq4")
+script = ExtResource("7_46x4f")
+
+[node name="Health" type="TextureProgressBar" parent="UI"]
+offset_left = 419.0
+offset_top = 592.0
+offset_right = 733.0
+offset_bottom = 630.0
+value = 19.0
+nine_patch_stretch = true
+texture_over = ExtResource("8_tpd62")
+texture_progress = ExtResource("9_ghv36")
+
+[connection signal="pressed" from="CANVAS/MainMenu2/MarginContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="CANVAS/MainMenu2/MarginContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="CANVAS/PauseMenu/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CANVAS/PauseMenu/MarginContainer/VBoxContainer/Spectate" to="." method="_on_spectate_pressed"]
+[connection signal="pressed" from="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer/JoinGame" to="." method="_on_join_game_pressed"]
+[connection signal="pressed" from="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer/Spectate" to="." method="_on_spectate_pressed"]
+[connection signal="item_selected" from="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer2/FactionSelect" to="." method="_on_faction_select_item_selected"]
+[connection signal="item_selected" from="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer2/ItemList" to="." method="_on_ship_selected"]
+[connection signal="item_selected" from="CANVAS/ShipMenu/MarginContainer/HBoxContainer/VBoxContainer2/ItemList" to="." method="_on_ship_selected_or_ship_moused_over"]

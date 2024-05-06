@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dip2l8wi2xcnw"]
+
+[ext_resource type="Script" path="res://blasts/Turret.gd" id="1_fksjr"]
+[ext_resource type="Texture2D" uid="uid://c87g3emtnjhwh" path="res://TEXTURES/TEXTURES/player/turret.png" id="1_rle6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mofyl"]
+size = Vector2(6, 6)
+
+[node name="Node2D" type="CharacterBody2D"]
+script = ExtResource("1_fksjr")
+rot_speed = 0.023
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rle6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mofyl")
+disabled = true

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://boqyocr41swjf"]
+
+[ext_resource type="Texture2D" uid="uid://lu6aagnumlh5" path="res://TEXTURES/TEXTURES/player/UI/healthbarUNDER.png" id="1_48sx2"]
+[ext_resource type="Texture2D" uid="uid://dkddk648o2xio" path="res://TEXTURES/TEXTURES/player/UI/healthbarOVER.png" id="2_etox8"]
+[ext_resource type="Texture2D" uid="uid://bt7tbl4ehfgew" path="res://TEXTURES/TEXTURES/player/UI/healthbarVALUE.png" id="3_b65mq"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Health" type="TextureProgressBar" parent="."]
+offset_left = 419.0
+offset_top = 592.0
+offset_right = 733.0
+offset_bottom = 630.0
+value = 55.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_48sx2")
+texture_over = ExtResource("2_etox8")
+texture_progress = ExtResource("3_b65mq")

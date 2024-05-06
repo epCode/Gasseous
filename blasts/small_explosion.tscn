@@ -1,0 +1,164 @@
+[gd_scene load_steps=12 format=3 uid="uid://dchm12k0gbsog"]
+
+[ext_resource type="Script" path="res://blasts/small_explosion.gd" id="1_edoln"]
+[ext_resource type="Texture2D" uid="uid://cbdhj61n0ohk0" path="res://TEXTURES/TEXTURES/player/UI/FactionAlliance.png" id="2_jvqv6"]
+
+[sub_resource type="Curve" id="Curve_swcre"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.268443, 1), 0.0, 0.0, 0, 0, Vector2(0.682377, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_ct5cq"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_dn4cx"]
+colors = PackedColorArray(0, 0, 0, 1, 0.244776, 0.244776, 0.244776, 1)
+
+[sub_resource type="Gradient" id="Gradient_gwgmy"]
+
+[sub_resource type="Gradient" id="Gradient_b46vj"]
+colors = PackedColorArray(1, 1, 1, 1, 0.103744, 0.103744, 0.103744, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sp7i8"]
+
+[sub_resource type="Animation" id="Animation_l5bkp"]
+resource_name = "default"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D2:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hc21y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D2:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vonx4"]
+_data = {
+"RESET": SubResource("Animation_hc21y"),
+"default": SubResource("Animation_l5bkp")
+}
+
+[node name="PERTIC" type="CharacterBody2D"]
+modulate = Color(2, 2, 1, 1)
+scale = Vector2(1.06762, 0.410328)
+script = ExtResource("1_edoln")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.71623, 4.10135)
+texture = ExtResource("2_jvqv6")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+modulate = Color(0.470588, 0.486275, 1, 1)
+z_index = -125
+scale = Vector2(0.445415, 0.808942)
+amount = 80
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.2
+explosiveness = 0.85
+lifetime_randomness = 0.38
+local_coords = true
+spread = 179.45
+gravity = Vector2(0, 0)
+initial_velocity_max = 300.0
+angular_velocity_min = 24.75
+angular_velocity_max = 221.54
+linear_accel_min = -16.0
+linear_accel_max = -16.0
+scale_amount_min = 2.0
+scale_amount_max = 31.58
+scale_amount_curve = SubResource("Curve_swcre")
+color = Color(1, 1, 1, 0.145098)
+color_ramp = SubResource("Gradient_ct5cq")
+color_initial_ramp = SubResource("Gradient_dn4cx")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(1.7, 1.7, 1.7, 1)
+z_index = -124
+scale = Vector2(0.445415, 0.808942)
+amount = 15
+lifetime = 0.6
+one_shot = true
+speed_scale = 2.2
+explosiveness = 0.85
+local_coords = true
+spread = 179.45
+gravity = Vector2(0, 0)
+initial_velocity_max = 317.6
+angular_velocity_min = 24.75
+angular_velocity_max = 221.54
+scale_amount_min = 2.0
+scale_amount_max = 9.0
+scale_amount_curve = SubResource("Curve_swcre")
+color = Color(0.627451, 0.0941176, 0, 1)
+color_ramp = SubResource("Gradient_gwgmy")
+color_initial_ramp = SubResource("Gradient_b46vj")
+hue_variation_min = -0.88
+hue_variation_max = 0.65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sp7i8")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vonx4")
+}
+autoplay = "default"
